@@ -1,0 +1,16 @@
+Gesture,Response,Proportion
+Arm raise (bonobo),Success (Primary),0.75
+Object shake,Success (Primary),0.22
+Present genitals,Success (Primary),0.47
+Reach (chimp),Success (Primary),0.62
+Touch (chimp),Success (Primary),0.69
+Arm raise (bonobo),Success (Alternate),0.15
+Object shake,Success (Alternate),0.22
+Present genitals,Success (Alternate),0.35
+Reach (chimp),Success (Alternate),0.15
+Touch (chimp),Success (Alternate),0.14
+Arm raise (bonobo),Failure,0.1
+Object shake,Failure,0.56
+Present genitals,Failure,0.18
+Reach (chimp),Failure,0.22
+Touch (chimp),Failure,0.17
