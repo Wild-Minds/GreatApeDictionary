@@ -1,11 +1,11 @@
-setwd("C:/Users/kg960/Desktop/Gorilla Exp/2020 GAD Paper")
+setwd("path")
 source("/home/mundryr/r_functions/drop1_para.r")
 source("/home/mundryr/r_functions/helpers.r")
 
 ls() ##shows active workspaces
 rm(list=ls()) ##clears the active workspaces
 
-xdata=read.csv(file="D:/kristy_cat/GAD_FullCleanDataset.txt", header=T, stringsAsFactors=T, dec=".", sep="\t", fill=T)
+xdata=read.csv(file="D:/kirsty_cat/GAD_FullCleanDataset.txt", header=T, stringsAsFactors=T, dec=".", sep="\t", fill=T)
 str(xdata)
 
 source("D:/linear_models/functions/diagnostic_fcns.r")
@@ -121,6 +121,17 @@ wt2(tests.full.wnc$drop1.res)
 wt2(tests.red.wnc$drop1.res)
 
 ##plotting:
+#Figure1, from main dataset
+bp=ggplot(dictionary, aes(x=Gesture, y=Success, fill=Meaning.s.))+geom_boxplot(outliner.colour=NA, width=.7)+geom_dotplot(binaxis="y", binwidth=.02, stackdir="center", fill=NA)+guides(fill=guide_legend(title=NULL))
+bp+theme(axis.text.x=element_text(angle=90, hjust=1, vjust=.5, color="black"))+geom_hline(yintercept=.25, linetype="dashed")
+
+
+#Figure2, import data AmbiHist.csv
+ce=ddply(AmbiHist, "Gesture", transform, percent_weight=Proportion/sum(Proportion)*100)
+bp=ggplot(ce, aes(x=Gesture, y=percent_weight, fill=Response))+geom_bar(stat="identity")
+bp+theme(axis.text.x=element_text(angle=90, hjust=1, vjust=.5))+ylab("Percentage of responses")+xlab("Gesture type")+scale_color_grey()+scale_fill_grey()
+
+#FigureS2, from main dataset
 source("/home/roger/roger/from_old/r_functions/factor_int_plot_fcn.r")
 to.plot=aggregate(x=test.data$Success, by=test.data[, c("Participant", "Condition", "ambig")], FUN=mean)
 to.plot$N=aggregate(x=test.data$Success, by=test.data[, c("Participant", "Condition", "ambig")], FUN=length)$x
@@ -141,10 +152,11 @@ save.image("/home/roger/roger/from_old/2021/to_do/kristy/GAD_workspace.RData")
 
 
 save.image("/home/mundryr/transfer/GAD_workspace.RData")
-load("/home/roger/roger/from_old/2021/to_do/kristy/GAD_workspace.RData")
+load("/home/roger/roger/from_old/2021/to_do/kirsty/GAD_workspace.RData")
 
 save.image("D:/kristy_cat/GAD_workspace.RData")
 
+##I THINK EVERYTHING BELOW THIS LINE WAS MY OLD STUFF AND SHOULD BE REMOVED:
 	
 full=glmer(Success~Gesture*Condition*Ambiguous+Meaning+Species+
 	(1|Participant), ##participant ID as a random effect, no random slopes
