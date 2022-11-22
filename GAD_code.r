@@ -126,7 +126,7 @@ bp=ggplot(dictionary, aes(x=Gesture, y=Success, fill=Meaning.s.))+geom_boxplot(o
 bp+theme(axis.text.x=element_text(angle=90, hjust=1, vjust=.5, color="black"))+geom_hline(yintercept=.25, linetype="dashed")
 
 
-#Figure2, import data AmbiHist.csv
+#Figure2, import data Figure2data.csv
 ce=ddply(AmbiHist, "Gesture", transform, percent_weight=Proportion/sum(Proportion)*100)
 bp=ggplot(ce, aes(x=Gesture, y=percent_weight, fill=Response))+geom_bar(stat="identity")
 bp+theme(axis.text.x=element_text(angle=90, hjust=1, vjust=.5))+ylab("Percentage of responses")+xlab("Gesture type")+scale_color_grey()+scale_fill_grey()
